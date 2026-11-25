@@ -627,7 +627,7 @@ Object.keys(QX).map(Number).sort((a,b)=>a-b).forEach(n=>QX[n]());
 {const g=mk('abs',ST,'<span>강사·판서 구역</span>');g.id='guide';g.className='';}
 SL.forEach(s=>{const ink=document.createElement('div');ink.className='inkl';[...s.el.children].forEach(c=>{if(!(c.classList.contains('paper')||c.classList.contains('src')||c.querySelector('img')))ink.appendChild(c);});s.el.appendChild(ink);});
 
-function fit(){const W=innerWidth,H=innerHeight,rot=H>W*1.1;const sc=rot?Math.min(W/1080,H/1920):Math.min(W/1920,H/1080);ST.style.transform=(rot?'rotate(90deg) ':'')+'scale('+sc+')';document.body.classList.toggle('rot',rot);}
+function fit(){const W=innerWidth,H=innerHeight,X0=70,CW=1230,sc=Math.min(W/CW,H/1080);ST.style.left='0';ST.style.top='0';ST.style.margin='0';ST.style.transformOrigin='0 0';ST.style.transform='translate('+((W-CW*sc)/2-X0*sc)+'px,'+(H>W?12:Math.max(0,(H-1080*sc)/2))+'px) scale('+sc+')';}
 addEventListener('resize',fit);fit();
 let cur=0,st=0,playing=null,playingSlide=null;
 function render(anim){
@@ -821,7 +821,7 @@ document.fonts.ready.then(()=>render(st===0&&!m?'fwd':undefined));
 </script>
 <!--QR-SITE-PATCH-->
 <style>
-html,body{overflow:hidden!important;position:fixed;inset:0;touch-action:manipulation;overscroll-behavior:none}
+html,body{background:var(--paper,#f3f1ea)!important;overflow:hidden!important;position:fixed;inset:0;touch-action:manipulation;overscroll-behavior:none}
 #fsbtn{display:none!important}
 #qrnav{position:fixed;left:10px;bottom:10px;z-index:99999;display:flex;gap:8px;font:700 15px/1 "Noto Sans KR",sans-serif;word-break:keep-all}
 #qrnav a,#qrnav button{all:unset;cursor:pointer;padding:9px 13px;border-radius:10px;background:rgba(20,20,20,.82);color:#fff;border:1px solid rgba(0,0,0,.3)}
